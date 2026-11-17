@@ -18,8 +18,10 @@ Use exact integer minor-unit arithmetic, date-only calculations, and concurrency
 - `NOTES.md` for run instructions, skipped work, and assumptions; `PROMPTS.md` for AI conversations before submission.
 - Submit on `main`, with the repository under 200 MB.
 
-## Next steps
+## Progress and next steps
 
-Choose the stack, then build health/tests/Docker → members → billing → reconciliation → submission checks. No application code exists yet; stack and storage are undecided. No frontend or hosted deployment is required.
+The initial scaffold uses Node.js 24, TypeScript, and Fastify, with a health endpoint, Node test runner checks, and Docker runtime/test stages. App creation is separate from server startup so tests can send requests without opening a port. Storage is still undecided.
+
+Next: members → billing → reconciliation → submission checks. No frontend or hosted deployment is required. See `NOTES.md` for run commands and current scope.
 
 See [the task brief](docs/gymnation-task.md) for exact schemas, rules, and errors.

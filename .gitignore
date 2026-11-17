@@ -16,6 +16,8 @@ Thumbs.db
 *~
 
 # Generated local files
+/node_modules/
+/dist/
 /.cache/
 /coverage/
 /tmp/
