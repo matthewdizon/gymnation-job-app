@@ -35,3 +35,17 @@ Request (exact development prompts):
 
 - Implementation summary: Confirmed complete Part 2 scope before editing. Added app-scoped plan and agreement stores and their three endpoints, synchronous plan uniqueness, shared body/ID/integer validation, date-only calendar helpers, and a reusable invoice calculator. Used BigInt for half-up money calculations, clamped monthly anchors without drift, inclusive filtering with lifetime invoice numbering, and no persisted invoices. Documented input limits.
 - Verification summary: Typecheck, compilation, and all 29 tests passed, including both worked examples, all due-day anchors, leap years, half-up rounding, BHD precision, large integers, date/range validation, isolated stores, and 40 concurrent plan writes. Docker test-stage and runtime builds passed. The production container passed health and the full Part 2 HTTP walkthrough with external networking disabled. Reviewed shared logic and the complete uncommitted change set; no outstanding blockers.
+
+## 2026-11-18 — Gateway reconciliation
+
+Request (exact development prompts):
+
+> let's now build out the logic for part 3 of reconciling gateway file\
+> \
+> Do not make any changes, until you have 95% confidence that you know what to build ask me follow up questions until you have that confidence. For each question add options to choose from (e.g. a, b, c). Ideally try to to not ask too many questions if possible. If applicable, for each question, list what you recommend.
+
+> 1. a
+> 2. a
+
+- Implementation summary: Confirmed complete Part 3 scope and validation defaults before editing. Added POST and GET reconciliation routes and app-scoped run snapshots. Reused the invoice calculator and date/field validation, exposed agreement iteration, aggregated row business errors, and selected earliest candidates before counting links and assigning verdicts. Preserved request order and sorted unmatched invoices. Documented empty runs, validation precedence, and transaction uniqueness within each run.
+- Verification summary: Typecheck, production compilation, all 39 tests, and Docker test-stage and runtime builds passed. Tests cover all verdicts, order independence, tolerance, earliest candidates, validation aggregation, calendar boundaries, BHD precision, zero-total invoices, concurrent runs, and snapshot isolation. The production container passed HTTP health, setup, reconciliation, and saved-run retrieval with external networking disabled. Reviewed all uncommitted changes and shared logic; no outstanding blockers.

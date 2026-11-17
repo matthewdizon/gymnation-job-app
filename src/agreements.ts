@@ -17,6 +17,7 @@ export function createAgreementStore() {
       return agreement;
     },
     findById(id: string): Agreement | undefined { return agreements.get(id); },
+    all(): IterableIterator<Agreement> { return agreements.values(); },
   };
 }
 

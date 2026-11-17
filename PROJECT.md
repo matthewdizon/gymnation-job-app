@@ -24,6 +24,8 @@ The API uses Node.js 24, TypeScript, and Fastify, with a health endpoint, Node t
 
 Part 2 implements plan and agreement creation and computed invoice schedules. A shared calculator handles date clamping, proration, joining fees, integer half-up rounding, and VAT. Tests cover the worked examples, calendar boundaries, validation, filtering, and concurrent plan creation.
 
-Next: reconciliation → submission checks. No frontend or hosted deployment is required. See `NOTES.md` for run commands and current scope.
+Part 3 implements monthly gateway reconciliation and stored run retrieval. It reuses the invoice calculator, validates all rows before saving, and counts invoice links before assigning order-independent verdicts. Tests cover validation aggregation, amount tolerance, earliest candidates, declined rows, sorted unmatched invoices, fixed snapshots, and concurrent runs.
+
+Next: submission checks. No frontend or hosted deployment is required. See `NOTES.md` for run commands and current scope.
 
 See [the task brief](docs/gymnation-task.md) for exact schemas, rules, and errors.

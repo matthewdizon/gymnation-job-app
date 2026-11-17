@@ -3,6 +3,7 @@ import type { FastifyServerOptions } from 'fastify';
 import { createPlanStore, registerPlanRoutes } from './plans.js';
 import { createAgreementStore, registerAgreementRoutes } from './agreements.js';
 import { ApiError } from './errors.js';
+import { createReconciliationStore, registerReconciliationRoutes } from './reconciliation.js';
 import { createMemberStore, registerMemberRoutes } from './members.js';
 
 export function buildApp(options: FastifyServerOptions = {}) {
@@ -28,6 +29,7 @@ export function buildApp(options: FastifyServerOptions = {}) {
   registerMemberRoutes(app, members);
   registerPlanRoutes(app, plans);
   registerAgreementRoutes(app, agreements, members, plans);
+  registerReconciliationRoutes(app, createReconciliationStore(), agreements, plans);
 
   app.get('/health', async () => ({ status: 'ok' }));
 
