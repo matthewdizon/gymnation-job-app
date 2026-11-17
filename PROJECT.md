@@ -20,8 +20,8 @@ Use exact integer minor-unit arithmetic, date-only calculations, and concurrency
 
 ## Progress and next steps
 
-The initial scaffold uses Node.js 24, TypeScript, and Fastify, with a health endpoint, Node test runner checks, and Docker runtime/test stages. App creation is separate from server startup so tests can send requests without opening a port. Storage is still undecided.
+The API uses Node.js 24, TypeScript, and Fastify, with a health endpoint, Node test runner checks, and Docker runtime/test stages. App creation is separate from server startup so tests can send requests without opening a port. Part 1 implements member creation and lookup, shared phone normalization, contract validation errors, and synchronous duplicate protection in an app-scoped in-memory store.
 
-Next: members → billing → reconciliation → submission checks. No frontend or hosted deployment is required. See `NOTES.md` for run commands and current scope.
+Next: billing → reconciliation → submission checks. No frontend or hosted deployment is required. See `NOTES.md` for run commands and current scope.
 
 See [the task brief](docs/gymnation-task.md) for exact schemas, rules, and errors.
