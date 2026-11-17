@@ -22,6 +22,8 @@ Use exact integer minor-unit arithmetic, date-only calculations, and concurrency
 
 The API uses Node.js 24, TypeScript, and Fastify, with a health endpoint, Node test runner checks, and Docker runtime/test stages. App creation is separate from server startup so tests can send requests without opening a port. Part 1 implements member creation and lookup, shared phone normalization, contract validation errors, and synchronous duplicate protection in an app-scoped in-memory store.
 
-Next: billing → reconciliation → submission checks. No frontend or hosted deployment is required. See `NOTES.md` for run commands and current scope.
+Part 2 implements plan and agreement creation and computed invoice schedules. A shared calculator handles date clamping, proration, joining fees, integer half-up rounding, and VAT. Tests cover the worked examples, calendar boundaries, validation, filtering, and concurrent plan creation.
+
+Next: reconciliation → submission checks. No frontend or hosted deployment is required. See `NOTES.md` for run commands and current scope.
 
 See [the task brief](docs/gymnation-task.md) for exact schemas, rules, and errors.

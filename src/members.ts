@@ -1,6 +1,7 @@
 import { randomUUID } from 'node:crypto';
 import type { FastifyInstance } from 'fastify';
 import { ApiError } from './errors.js';
+import { parseObject } from './validation.js';
 import { normalizePhone, parseCountry } from './phones.js';
 import type { Country } from './phones.js';
 
@@ -41,10 +42,7 @@ export function createMemberStore() {
 
 export function registerMemberRoutes(app: FastifyInstance, store: ReturnType<typeof createMemberStore>) {
   app.post<{ Body: Record<string, unknown> }>('/members', async (request, reply) => {
-    const body = request.body;
-    if (body === null || typeof body !== 'object' || Array.isArray(body)) {
-      throw new ApiError(422, 'VALIDATION', 'body must be an object');
-    }
+    const body = parseObject(request.body);
     if (typeof body.name !== 'string') {
       throw new ApiError(422, 'VALIDATION', 'name must be a string');
     }

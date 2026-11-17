@@ -1,5 +1,7 @@
 import Fastify from 'fastify';
 import type { FastifyServerOptions } from 'fastify';
+import { createPlanStore, registerPlanRoutes } from './plans.js';
+import { createAgreementStore, registerAgreementRoutes } from './agreements.js';
 import { ApiError } from './errors.js';
 import { createMemberStore, registerMemberRoutes } from './members.js';
 
@@ -20,7 +22,12 @@ export function buildApp(options: FastifyServerOptions = {}) {
     return reply.code(500).send({ error: { code: 'INTERNAL_ERROR', message: 'Internal server error' } });
   });
 
-  registerMemberRoutes(app, createMemberStore());
+  const members = createMemberStore();
+  const plans = createPlanStore();
+  const agreements = createAgreementStore();
+  registerMemberRoutes(app, members);
+  registerPlanRoutes(app, plans);
+  registerAgreementRoutes(app, agreements, members, plans);
 
   app.get('/health', async () => ({ status: 'ok' }));
 

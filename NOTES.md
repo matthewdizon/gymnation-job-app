@@ -23,7 +23,8 @@ docker run --rm -p 8080:8080 app
 
 # Scope and assumptions
 
-- Part 1 is implemented: `POST /members` and `GET /members/lookup` normalize supported mobiles, validate inputs, and enforce unique phones. Billing and reconciliation are not implemented yet.
+- Parts 1 and 2 are implemented: members, plans, agreements, and computed invoice schedules. Reconciliation is not implemented yet.
 - Health reports process availability; there are no external dependencies to probe.
-- Members are stored in memory per app instance and reset on restart. Run one Node.js process; synchronous duplicate checks and writes protect uniqueness within that process. No runtime network access is needed.
+- Members, plans, and agreements are stored in memory per app instance and reset on restart. Run one Node.js process; synchronous duplicate checks and writes protect uniqueness within that process. No runtime network access is needed.
 - Phone cleaning removes literal spaces, hyphens, and round brackets; other whitespace is invalid. Name limits count Unicode code points after trimming. Extra JSON fields are ignored; country codes are case-sensitive.
+- Plan IDs and referenced IDs must be nonblank strings; IDs are preserved exactly. Dates use the Gregorian calendar, years 0001–9999. Money inputs must be safe JavaScript integers; calculations use BigInt, and an invoice that cannot be represented safely as JSON numbers returns `422 VALIDATION`.

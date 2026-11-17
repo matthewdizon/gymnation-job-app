@@ -22,3 +22,16 @@ Request (exact development prompts):
 
 - Implementation summary: Confirmed in-memory storage before editing. Added app-scoped member indexes, synchronous uniqueness checks, shared phone normalization for all three countries, member creation and lookup routes, and contract error handling. Kept parsing and storage separate for reuse and interview changes. Documented storage and input assumptions.
 - Verification summary: Typecheck, production compilation, the Docker test-stage build, and all 20 tests passed, including phone spellings, foreign SIMs, validation, lookup, isolated stores, and 40 concurrent duplicate writes.
+
+## 2026-11-18 — Plans and invoice schedules
+
+Request (exact development prompts):
+
+> let's now build out the logic for part 2 of plans and invoice schedule\
+> \
+> Do not make any changes, until you have 95% confidence that you know what to build ask me follow up questions until you have that confidence. For each question add options to choose from (e.g. a, b, c). Ideally try to to not ask too many questions if possible. If applicable, for each question, list what you recommend.
+
+> a - and let me know how i can test and debug this myself
+
+- Implementation summary: Confirmed complete Part 2 scope before editing. Added app-scoped plan and agreement stores and their three endpoints, synchronous plan uniqueness, shared body/ID/integer validation, date-only calendar helpers, and a reusable invoice calculator. Used BigInt for half-up money calculations, clamped monthly anchors without drift, inclusive filtering with lifetime invoice numbering, and no persisted invoices. Documented input limits.
+- Verification summary: Typecheck, compilation, and all 29 tests passed, including both worked examples, all due-day anchors, leap years, half-up rounding, BHD precision, large integers, date/range validation, isolated stores, and 40 concurrent plan writes. Docker test-stage and runtime builds passed. The production container passed health and the full Part 2 HTTP walkthrough with external networking disabled. Reviewed shared logic and the complete uncommitted change set; no outstanding blockers.
